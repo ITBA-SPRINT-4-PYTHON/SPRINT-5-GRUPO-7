@@ -10,7 +10,7 @@ class Buscador():
         
     def tiposErrores(self, cliente):
         self.devolucion = {
-            'nombre': str(cliente.nombre + cliente.apellido),
+            'nombre': str(cliente.nombre + ' ' + cliente.apellido),
             'numero': str(cliente.nro),
             'dni': str(cliente.dni),
             'direccion':{
@@ -44,10 +44,12 @@ class Buscador():
                 if not cliente.puede_tener_chequera():
                     laRazon = RazonAltaChequera('Ha Superado La Cantidad Maxima de Chequeras')
                 
-            elif x['tipo'] == 'COMPRAR_DOLAR':
+            elif x['tipo'] == 'COMPRA_DOLAR':
                 if not cliente.puede_comprar_dolar():
                     laRazon = RazonCompraDolar('Usted no puede comprar dolares')
-                
+                elif x['saldoEnCuenta'] < x['monto']:
+                    laRazon = RazonCompraDolar('No le alcanza para comprar dolares')
+                    
             elif x['tipo'] == 'TRANSFERENCIA_ENVIADA':
                 if cliente.cajaAhorro.monto < (x['monto'] * (cliente.cajaAhorro.costoTrans + 1)):
                     laRazon = RazonTransEnviada('Su dinero no alcanza para realizar la transferencia')

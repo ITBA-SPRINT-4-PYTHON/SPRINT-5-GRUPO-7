@@ -1,7 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 *{
     margin: 1em;
+    font-family: 'Poppins', sans-serif;
 }
 
-li {
-    list-style-type: none;
+table{
+    text-align: justify;
 }
+
+table *{
+    padding: 10px;
+}
+
+table, th, td {
+    border: 3px solid white;
+    border-collapse: collapse;
+}
+
+th, td {
+    background-color: rgba(0, 0, 0, 0.12);
+  }

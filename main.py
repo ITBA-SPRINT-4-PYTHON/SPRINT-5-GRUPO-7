@@ -2,7 +2,7 @@ import parseador
 import errores
 import reporte
 
-miParser = parseador.Parser('eventos_classic.json')
+miParser = parseador.Parser('eventos_gold.json')
 
 buscador = errores.Buscador(miParser.eventos)
 
